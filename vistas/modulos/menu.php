@@ -253,7 +253,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li>
-								<a href="https://www.miportalweb.org/responsivas/extensiones/fpdf183/reportes/rep_empleados.php" target="_blank">
+								<a href="https://www.miportalweb.org/Proyectos/Essilor/extensiones/fpdf186/reportes/rep_empleados.php" target="_blank">
 									<i class="fa fa-circle-o"></i>
 									<span>Empleados</span>
 								</a>

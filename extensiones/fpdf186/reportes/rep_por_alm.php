@@ -54,11 +54,21 @@
     {
       //Cell(Ancho,Alto,Texto,Border=1,SigLinea=1 0=SinSaltoLinea,'Centrado,Left,Right',Relleno 0=Sin 1=Con)
   
+			$this->Image('../../../vistas/img/Logos/Essilor_Logo2.png',5,5,20);
+			//$this->Image('Essilor_Logo2.png',5,5,20);
+			$this->SetFont('Arial','B',8);			
+			$this->Ln(-8);
+			$this->Cell(35,10,'Blvd. 2000',0,0,'R');
+			$this->Ln(3);
+			$this->Cell(65,10,'Parque Industrial Nogales No. 23456',0,0,'R');			
+			$this->Ln(3);
+			
       $this->SetFont('Arial','B',12);
 			$this->Cell(60);
 			
+
       // Este valor "135" es para centrar, independiente del texto escrito
-      $this->Cell(135,10,'REPORTE PRODUCTOS POR ALMACEN',0,0,'C');
+      $this->Cell(100,10,'REPORTE PRODUCTOS POR ALMACEN',0,0,'C');
 			$this->Ln(4);
 			$this->Cell(0,5,date('F j, Y, g:i a'),0,1,'R',0);
 			$this->Ln(4);
