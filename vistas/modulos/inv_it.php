@@ -35,46 +35,72 @@
 	$item = null;
 	$valor = null;
 	$Arreglo_modelos = ModeloModelos::mdlMostrarModelos($tabla,$item,$valor);
-	//print_r("<br>");
-	//print_r("<br>");
-	//print_r("Imprimiendo los modelos");
-	//var_dump($Arreglo_modelos);
+	
+	/*
+	print_r("<br>");
+	print_r("<br>");
+	print_r("Imprimiendo los modelos");
+	var_dump($Arreglo_modelos);
+	exit;
+	return;
+	*/
 
 	$tabla = "t_Marca";
 	$item = null;
 	$valor = null;
 	$Arreglo_marcas = ModeloMarcas::mdlMostrarMarcas($tabla,$item,$valor);
-	//print_r("<br>");
-	//print_r("<br>");
-	//print_r("Imprimiendo las Marcas");
-	//var_dump($Arreglo_marcas);
+	
+	/*
+	print_r("<br>");
+	print_r("<br>");
+	print_r("Imprimiendo las Marcas");
+	var_dump($Arreglo_marcas);
+	exit;
+	return;
+	*/
+
 
 	$tabla = "t_Periferico";
 	$item = null;
 	$valor = null;
 	$Arreglo_perifericos = ModeloPerifericos::mdlMostrarPerifericos($tabla,$item,$valor);
-	//print_r("<br>");
-	//print_r("<br>");
-	//print_r("Imprimiendo los Perifericos");
-	//var_dump($Arreglo_perifericos);
+	
+	/*
+	print_r("<br>");
+	print_r("<br>");
+	print_r("Imprimiendo los Perifericos");
+	var_dump($Arreglo_perifericos);
+	exit;
+	return;
+	*/
 
 	$tabla = "t_Ubicacion";
 	$item = null;
 	$valor = null;
 	$Arreglo_ubicaciones = ModeloUbicaciones::mdlMostrarUbicaciones($tabla,$item,$valor);
-	//print_r("<br>");
-	//print_r("<br>");
-	//print_r("Imprimiendo las Ubicaciones");
-	//var_dump($Arreglo_ubicacion);
+	
+	/*
+	print_r("<br>");
+	print_r("<br>");
+	print_r("Imprimiendo las Ubicaciones");
+	var_dump($Arreglo_ubicaciones);
+	exit;
+	return;
+	*/
 
 	$tabla = "t_Linea";
 	$item = null;
 	$valor = null;
 	$Arreglo_linea = ModeloLineas::mdlMostrarLineas($tabla,$item,$valor);
-	//print_r("<br>");
-	//print_r("<br>");
-	//print_r("Imprimiendo las Lineas");
-	//var_dump($Arreglo_linea);
+	
+	/*
+	print_r("<br>");
+	print_r("<br>");
+	print_r("Imprimiendo las Lineas");
+	var_dump($Arreglo_linea);
+	exit;
+	return;
+	*/
 
 
 	// Pasandolo a un arreglo bidimencional los Modelos obtenidos
@@ -117,7 +143,9 @@
 		
 	}
 
-	//var_dump($Marcas_Obtenidas);
+	// var_dump($Marcas_Obtenidas);
+
+
 
 	// Pasandolo a un arreglo bidimencional los Perifericos obtenidos
 	$Perifericos_Obtenidos = array();
@@ -160,6 +188,8 @@
 	}
 
 	//var_dump($Ubicaciones_Obtenidas);
+	//exit;
+	//return;
 
 
 	// Pasandolo a un arreglo bidimencional las Lineas obtenidas
@@ -182,18 +212,48 @@
 	{
 		$columna_1 = 0;					
 		
-		//var_dump($Arreglo_marca);
+		//var_dump($Arreglo_marca[0]["id_modelo"]);
+		
 		$separar_cadena = explode(" ",$reg_csv_marca);
 		//print ("Tamaño -separar_cadena- : ".count($separar_cadena));
 
-		$Marcas = 'Sin Marcas';
+		$Marcas = 'Sin Marcasssss';
+		// $reg_csv_marca = Es la descripcion de Marca se captura en el archivo de Excel.
+
+		// $Arreglo_marca = Arreglo bidimensional.
 		for ($l=0;$l<count($Arreglo_marca);$l++)
 		{
 			for ($n=0;$n<2;$n++)
 			{
+				$cadena = $Arreglo_marca[$l][$n];
+
+				// if ( $cadena == $reg_csv_marca) // 'dell' ) // )
+				if ( strcmp($cadena,$reg_csv_marca) == 0)
+				{
+					//print_r('CUMPLE CONDICION');
+					$Marcas = $Arreglo_marca[$l][0];
+				}
+				else
+				{
+					//print_r('NO Cumple Condicion');
+				}
+
+				//print_r('Contenido De reg_cvs = '.$reg_csv_marca);
+				//print_r('<br>');
+
+				//print_r('Las marcas = '.$cadena);
+				//print_r('<br>');
+				////////////////////
+				/*
 				$contador_pal = 0;
 				for ($k=0;$k<count($separar_cadena);$k++)
 				{
+					// n = 0 ; obtiene el Id de la Marca
+					// n = 1 ; Obtiene la descripcion de la Marca
+					 //print_r($Arreglo_marca[$l][$n]);
+					 //print_r(' n '.$n);
+					 //print_r('<br>');
+
 					$encontro = strpos($Arreglo_marca[$l][$n],$separar_cadena[$k]);
 
 					if ($encontro === false)
@@ -211,8 +271,12 @@
 					$Marcas = $Arreglo_marca[$l][$n-1];
 					return $Marcas;
 				}
+				*/
+				/////////////////
+
 
 			} // for ($n=0;$n<2;$n++)
+
 
 		} // for ($l=0;$l<count($Arreglo_marca);$l++)
 
@@ -397,45 +461,23 @@ function ObtenerPrecio($Periferico)
 {
 	switch ($Periferico)
 	{
-		case (1): //Desktop
-			$Precio = 800;
-			break;
-		case (2):	// Laptop
-			$Precio = 1200;
-			break;
-		case (3): // Monitor
-			$Precio = 220;
-			break;
-		case (5): // Docking Station 
-			$Precio = 220;
-			break;								
-		case (32): // Tablets
+		case (1):	// Laptop
 			$Precio = 1000;
 			break;
-		case (33): // Escaner
-			$Precio = 200;
-			break;
-		case (12): // Zebra ZD 620
+		case (2): //Desktop
 			$Precio = 800;
 			break;
-		case (88):	// Zebra QLN 320
-			$Precio = 370;
+		case (3):	// Impresora
+			$Precio = 1000;
 			break;
-		case (13): // Zebra GX430T
-			$Precio = 800;
+	
+
+			case (6): // Monitor	
+			$Precio = 220;
 			break;
-		case (15): // Zebra ZT 610
-			$Precio = 2540;
+		case (13): // Docking Station 
+			$Precio = 220;
 			break;								
-		case (14): // Zebra ZT 510								
-			$Precio = 2350;
-			break;
-		case (25): // Zebra ZQ 320
-			$Precio = 850;
-			break;
-		case (16): // Zebra ZT 620
-			$Precio = 6000;
-			break;	
 		default:
 			$Precio = 0;
 			break;
@@ -464,6 +506,11 @@ function Eliminar_Espacios($cadena)
 	//var_dump($Arreglo_modelos);
 
 // Importando el archivo CSV
+// ================================================================
+// Importante que cuando se exporte desde Excel sea a formato : CSV delimeted Solamente
+// ================================================================
+
+
 		$file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
 		if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'],$file_mimes))
 		{
@@ -486,16 +533,15 @@ function Eliminar_Espacios($cadena)
 					// Para convertirlo a forma de "YYYY-MM-DD" para poderlo gabar en MySQL.
 					// $fecha_inicio = date("Y-m-d",strtotime($cinta_record[1]));
 
-
 					// Revisando si el Serial esta vacio.
-					if (!empty($inv_it[8])) 
+					if (!empty($inv_it[3])) 
 					{
 						$contador++;
 						//echo "Serial No vacio";
 
 						//print_r ("Procesando registro .. \n ".$contador);
 	
-						$valor = $inv_it[8]; // Serial
+						$valor = $inv_it[3]; // Serial
 						$item = "num_serie";
 						$tabla = "t_Productos";
 						$orden = "nombre";
@@ -506,34 +552,46 @@ function Eliminar_Espacios($cadena)
 						// if (!empty($exite_prod))
 						// if (!$exite_prod)
 						/*
-						Asset 			-> $inv_it[0]
-						Assign Date		->$inv_it[3]
-						Current Hostname	->$inv_it[4]
-						Kind - Periferico		->$inv_it[5]
-						Brand - Marca		->$inv_it[6]
-						Modelo			->$inv_it[7]
-						Serial				->$inv_it[8]	
-						Employee ID		->$inv_it[11]
-						CC				->$inv_it[13]						
-						*/
+							Marca 		-> $inv[0] 
+							Modelo	-> $inv[1] 
+							Periferico	-> $inv[2]
+							Serial		-> $inv[3] reemplazo de $inv[8]
+							Almacen 	->$inv[4] 	NO se utiliza 
+							Precio		->$inv[5]	NO se utiliza 	
+					*/
 
 
 						// Verifica si ya existe el serial en la tabla
 						$eXiste_prod = "S";
-						$modelo_sinEspacios = trim($inv_it[7]); // Eliminar_Espacios($inv_it[7]);
-						$marca_sinEspacios = trim($inv_it[6]); //Eliminar_Espacios($inv_it[6]);
-						$periferico_sinEspacios =trim($inv_it[5]); // Eliminar_Espacios($inv_it[5]);
+						$modelo_sinEspacios = Eliminar_Espacios($inv_it[1]);												
+						$marca_sinEspacios = Eliminar_Espacios($inv_it[0]);
+
+	
+						$periferico_sinEspacios = Eliminar_Espacios($inv_it[2]);
+
+						/*
+						print ('<br>');
+						print_r($marca_sinEspacios);
+						print('<br>');
+						exit;
+						return;
+						*/
+
 
 						if ($eXiste_prod=="S")
 						{
 							//echo "existe producto \r"; Eliminar_Espacios
+							
 							$Modelo = Obtener_IdModelo($Modelos_Obtenidos,strtolower($modelo_sinEspacios));
+
 							$Marca = Obtener_IdMarca($Marcas_Obtenidas,strtolower($marca_sinEspacios));
+
 							$Periferico = Obtener_IdPeriferico($Perifericos_Obtenidos,strtolower($periferico_sinEspacios));
-																
+						
+
 							$tabla = "t_Empleados";
 							$item = "ntid";
-							$valor = $inv_it[11]; // NTID Empleado.
+							$valor = '000'; // $inv_it[11]; // NTID Empleado.
 							$orden = "apellidos";
 							$empleado = 0;
 							
@@ -541,10 +599,11 @@ function Eliminar_Espacios($cadena)
 							if (empty($valor))
 							{
 								$EncontroEmpleado = "No asignado";
-								$Id_Empleado = 1;
+								$Id_Empleado = 1; // Id Sistemas
 							}
 							else
-							{								
+							{	
+								/*
 								$empleado = ModeloEmpleados::mdlMostrarEmpleados($tabla,$item,$valor,$orden); 
 								if ($empleado)
 								{
@@ -559,17 +618,19 @@ function Eliminar_Espacios($cadena)
 									$Id_Empleado = 1;
 									$num_reg_no_existen++;
 								}
+								*/
+
 							}
 
-						
-							$Precio = ObtenerPrecio($Periferico);
-
+							$Id_Empleado = 1;  // Sistemas IT 
+							// $Precio = ObtenerPrecio($Periferico);
+				
 							$datos_grabar = array("id_modelo"=>$Modelo,		
 																		"id_marca"=>$Marca,
 																		"id_periferico"=>$Periferico,
-																		"nomenclatura"=>$inv_it[4],
-																		"num_serie"=>$inv_it[8],
-																		"asset"=>$inv_it[0],
+																		"nomenclatura"=>'',
+																		"num_serie"=>$inv_it[3],
+																		"asset"=>'',
 																		"id_telefonia" =>1,
 																		"id_plan_tel" =>1,
 																		"num_tel" =>'',
@@ -579,15 +640,15 @@ function Eliminar_Espacios($cadena)
 																		"num_ip" =>'',
 																		"edo_tel" =>'NO Aplica',
 																		"id_empleado" =>$Id_Empleado,
-																		"id_almacen" =>1,
-																		"id_edo_epo" =>1,
+																		"id_almacen" =>3, // Almacen Idf5
+																		"id_edo_epo" =>3, // Nuevo
 																		"stock" =>1,
-																		"precio_compra" =>$Precio,
-																		"precio_venta" =>$Precio,
+																		"precio_compra" =>$inv_it[5],
+																		"precio_venta" =>$inv_it[5],
 																		"comentarios" =>rtrim(" "),
 																		"loftware" =>'',
-																		"id_ubicacion" =>3,
-																		"id_linea" =>1,
+																		"id_ubicacion" =>22, // Sistemas - IT
+																		"id_linea" =>1, // Sin Linea
 																		"estacion" =>'',
 																		"npa" =>'',
 																		"idf" =>'',
@@ -600,66 +661,6 @@ function Eliminar_Espacios($cadena)
 																		"imagen"=>$ruta
 																	);
 
-											// Actualizar el centro de costos.
-											//Es el empleado que se encuentra en el archivo “CSV”
-											// datos_grabar[‘id_empleado’]
-											// CC        ->$inv_it[13]
-
-											// Verificando si existe el centro de costos:
-											// Verificando si existe el centro de costos, pero antes revisar que no este vacio
-											if (!empty($inv_it[13]))
-											{
-
-												$tabla = 't_Centro_Costos';
-												$item = "num_centro_costos";
-												$valor = trim($inv_it[13]);
-												$Verif_CC = ModeloCentro_Costos::mdlMostrarCentro_Costos($tabla,$item,$valor);
-	
-												if ($Verif_CC)
-												{						
-													// $tabla = La tabla a utilizar					
-													// $item1 = Campo a Modificar
-													// $campoValidar = Campo que se usara para validar la condicion.
-													// $valor1 = Es el contenido de "$item1" el valor a Grabar en la tabla
-													// $valor2 = Es el valor de la condicion a validar
-													// 
-													$tabla = 't_Empleados';												
-													$item1 = "id_centro_costos";
-													$campoValidar = "id_empleado";
-													$valor1 = $Verif_CC['id_centro_costos'];
-													$valor2 =  $datos_grabar["id_empleado"];
-													$Act_CC = ModeloEmpleados::mdlActualizarEmpCualquierCampo($tabla,$item1,$campoValidar,$valor1,$valor2);
-													if (!$Act_CC)
-													{
-														echo "<br>";
-														echo "Error al Actualizar el Centro de Costos en tabla Empleados";
-													}
-													
-												}
-												else
-												{
-													echo "<br>";
-													echo "NO se encontro el Centro de Costos = ".$inv_it[13]." NTID Empleado = ".$inv_it[11];
-												}
-												
-											}
-
-
-
-
-							//print_r('Registros GRABADOS ======> ');																								
-							//print_r('Asset = '.$inv_it[0].' ; ');
-							//print_r('Current Hostname = '.$inv_it[4].' ; ');
-							//print_r('Periferico  Kind = '.$datos_grabar["id_periferico"].' ; ');					
-							//print_r('Brand  Marca = '.$datos_grabar["id_marca"].' ; ');
-							//print_r('Modelo = '.$datos_grabar["id_modelo"].' ; ');						
-							//print_r('Serial = '.$inv_it[8].' ; ');						
-							//print "<br>";
-							
-							
-							//$num_reg_no_existen++;
-							// Grabar el registro en la tabla.
-							//if (($datos_grabar["id_modelo"] != "Sin Modelos") && ($datos_grabar["id_marca"] != "Sin Marcas") && ($datos_grabar["id_periferico"] != "Sin Perifericos") && ($datos_grabar["id_empleado"] != 1))
 							if (($datos_grabar["id_modelo"] != "Sin Modelos") && ($datos_grabar["id_marca"] != "Sin Marcas") && ($datos_grabar["id_periferico"] != "Sin Perifericos"))
 							{
 								//$respuesta = "error";
@@ -678,7 +679,7 @@ function Eliminar_Espacios($cadena)
 									$respuesta = ModeloProductos::mdlIngresarProducto($tabla,$datos_grabar);
 									$num_reg_no_existen++;	
 
-									$valor = $inv_it[8]; // Serial
+									$valor = $inv_it[3]; // Serial
 									$item = "num_serie";
 									$tabla = "t_Productos";
 									$orden = "nombre";
@@ -716,9 +717,9 @@ function Eliminar_Espacios($cadena)
 										 // Actualizando la existencia(Stock) del producto
 										 $tabla = "t_Productos";
 										 $item1 = "stock";
-										 if ( $datos_grabar["id_empleado"] == 1 )
+										 if ( $datos_grabar["id_empleado"] == 1 ) // Sistemas
 										 {
-											 $valor1 = 1;									
+											 $valor1 = 1;	 								
 										 }
 										 else
 										 {
@@ -732,7 +733,7 @@ function Eliminar_Espacios($cadena)
 									 	if ($AsignarEpo != "ok")
 										{
 												echo "<br>";
-												echo "Error al Asignar Equipo .".$inv_it[8];
+												echo "Error al Asignar Equipo .".$inv_it[3];
 										}
 										else
 										{
@@ -742,6 +743,7 @@ function Eliminar_Espacios($cadena)
 											// CC        ->$inv_it[13]
 
 											// Verificando si existe el centro de costos, pero antes revisar que no este vacio
+											/*
 												if (!empty($inv_it[13]))
 												{
 													$tabla = 't_Centro_Costos';
@@ -777,12 +779,14 @@ function Eliminar_Espacios($cadena)
 													}
 												} // if (!$inv_it[13])
 
+											*/
+
 											//echo "Producto Asignado al Empleado : ".$valor1;
 										}
 										if ($ActExist != "ok")
 										{
 												echo "<br>";
-												echo "Error al Actualizar -Stock Producto ".$inv_it[8];
+												echo "Error al Actualizar -Stock Producto ".$inv_it[3];
 										}
 										else
 										{
@@ -801,13 +805,13 @@ function Eliminar_Espacios($cadena)
 							else   // if ($datos_grabar["id_modelo"] != "Sin Modelos") ....
 							{
 								print_r("Registros NO GRABADOS ===> : ");
-								print_r('Asset = '.$inv_it[0].' ; ');
-								print_r('Current Hostname = '.$inv_it[4].' ; ');
+								// print_r('Asset = '.$inv_it[0].' ; ');
+								//print_r('Current Hostname = '.$inv_it[4].' ; ');
 								print_r('Periferico  Kind = '.$datos_grabar["id_periferico"].' ; ');		
 								print_r('Brand  Marca = '.$datos_grabar["id_marca"].' ; ');
 								print_r('Modelo = '.$datos_grabar["id_modelo"].' ; ');						
-								print_r('Serial = '.$inv_it[8].' ; ');
-								print_r('Numero Empleado = '.$EncontroEmpleado.' ; ');				
+								print_r('Serial = '.$inv_it[3].' ; ');
+								//print_r('Numero Empleado = '.$EncontroEmpleado.' ; ');				
 								print "<br>";
 							}
 							
@@ -817,249 +821,7 @@ function Eliminar_Espacios($cadena)
 							//$num_reg_existen++;							
 						}
 
-					} // if (!empty($inv_it[8]))
-		
-			/*
-					// **** Para subir el Inventario de Máquinas de Producción.
-									
-					// Para convertirlo a forma de "YYYY-MM-DD" para poderlo gabar en MySQL.
-					// $fecha_inicio = date("Y-m-d",strtotime($cinta_record[1]));
-
-					// Revisando si el Serial esta vacio.
-					if (!empty($inv_it[5])) 
-					{
-						$valor = $inv_it[5]; // Serial
-						$item = "num_serie";
-						$tabla = "t_Productos";
-						$orden = "nombre";
-
-						// Descomentar para que detemrine si existe el producto.
-						$exite_prod = ModeloProductos::mdlMostrarProductos($tabla,$item,$valor,$orden);
-						
-						// if (!empty($exite_prod))
-						// if (!$exite_prod)
-						
-						// Verifica si ya existe el serial en la tabla
-						//$existe_prod = "";
-						if (empty($exite_prod))
-						{
-							$Modelo = Obtener_IdModelo($Modelos_Obtenidos,strtolower($inv_it[4]));
-							$Marca = Obtener_IdMarca($Marcas_Obtenidas,strtolower($inv_it[3]));
-							$Periferico = Obtener_IdPeriferico($Perifericos_Obtenidos,strtolower($inv_it[2]));
-							switch ($Periferico)
-							{
-								case (1):
-									$Precio = 800;
-									break;
-								case (2):	
-									$Precio = 1200;
-									break;
-								case (3):
-									$Precio = 220;
-									break;
-								case (4):
-									$Precio = 220;
-									break;								
-								case (32):
-									$Precio = 1000;
-									break;
-								case (33):
-									$Precio = 200;
-									break;
-							}
-
-							$datos_grabar = array("id_modelo"=>$Modelo,		
-																		"id_marca"=>$Marca,
-																		"id_periferico"=>$Periferico,
-																		"nomenclatura"=>$inv_it[1],
-																		"num_serie"=>$inv_it[5],
-																		"asset"=>$inv_it[0],
-																		"id_telefonia" =>1,
-																		"id_plan_tel" =>1,
-																		"num_tel" =>'',
-																		"cuenta" =>'',
-																		"direcc_mac_tel" =>'',
-																		"imei_tel" =>'',
-																		"num_ip" =>'',
-																		"edo_tel" =>'NO Aplica',
-																		"id_empleado" =>1,
-																		"id_almacen" =>1,
-																		"id_edo_epo" =>1,
-																		"stock" =>1,
-																		"precio_compra" =>$Precio,
-																		"precio_venta" =>$Precio,
-																		"comentarios" =>rtrim(" "),
-																		"loftware" =>'',
-																		"id_ubicacion" =>3,
-																		"id_linea" =>1,
-																		"estacion" =>$inv_it[9],
-																		"npa" =>$inv_it[8],
-																		"idf" =>$inv_it[10],
-																		"patch_panel" =>$inv_it[11],
-																		"puerto" =>$inv_it[12],
-																		"funcion" =>$inv_it[13],
-																		"jls" =>'',
-																		"qdc" =>'',
-																		"cuantas_veces" =>1,
-																		"imagen"=>$ruta
-																	);
-					
-																								
-							print_r('Asset = '.$inv_it[0].' ; ');
-							print_r('Current Hostname = '.$inv_it[1].' ; ');
-							print_r('Periferico  Kind = '.$datos_grabar["id_periferico"].' ; ');						
-							print_r('Brand  Marca = '.$datos_grabar["id_marca"].' ; ');
-							print_r('Modelo = '.$datos_grabar["id_modelo"].' ; ');						
-							print_r('Serial = '.$inv_it[5].' ; ');						
-							print "<br>";
-														
-							$num_reg_no_existen++;
-												// Grabar el registro en la tabla.
-							$respuesta = "error";
-							$tabla = "t_Productos";
-							// Descomentarla para que grabe en la tabla
-							$respuesta = ModeloProductos::mdlIngresarProducto($tabla,$datos_grabar);
-							
-							if ($respuesta != "ok")
-							{
-								print_r ("error al grabar el registros : ".$datos_grabar["num_serie"]);
-								print ("<br>");
-							}
-						}
-						else
-						{
-							$num_reg_existen++;
-						}
-
-					} // if (!empty($inv_it[8]))
-			*/
-
-	/*	
-					// **** Para subir el Inventario de Máquinas de Producción.
-									
-					// Para convertirlo a forma de "YYYY-MM-DD" para poderlo gabar en MySQL.
-					// $fecha_inicio = date("Y-m-d",strtotime($cinta_record[1]));
-
-					// Revisando si el Serial esta vacio.
-					if (!empty($inv_it[4])) 
-					{
-						$valor = $inv_it[4]; // Serial
-						$item = "num_serie";
-						$tabla = "t_Productos";
-						$orden = "nombre";
-
-						// Descomentar para que detemrine si existe el producto.
-						$exite_prod = ModeloProductos::mdlMostrarProductos($tabla,$item,$valor,$orden);
-						
-						// if (!empty($exite_prod))
-						// if (!$exite_prod)
-						
-						// Verifica si ya existe el serial en la tabla
-						//$existe_prod = "";
-						if (empty($exite_prod))
-						{
-							$Modelo = Obtener_IdModelo($Modelos_Obtenidos,strtolower($inv_it[3]));
-							$Marca = 5;
-							$Periferico = 14;
-							$Ubicacion = Obtener_IdUbicacion($Ubicaciones_Obtenidas,strtolower($inv_it[5]));
-							$Linea = Obtener_IdLinea($Lineas_Obtenidas,strtolower($inv_it[6]));
-							if ($Linea == "Sin Linea")
-							{
-								$Linea = 13;
-							}
-
-							switch ($Modelo)
-							{						
-								case (12):
-									$Precio = 800;
-									break;
-								case (88):	
-									$Precio = 370;
-									break;
-								case (13):
-									$Precio = 800;
-									break;
-								case (15):
-									$Precio = 2540;
-									break;								
-								case (14):
-									$Precio = 2350;
-									break;
-							case (25):
-									$Precio = 850;
-									break;
-								case (16):
-									$Precio = 6000;
-									break;	
-							}
-
-							$datos_grabar = array("id_modelo"=>$Modelo,		
-																		"id_marca"=>$Marca,
-																		"id_periferico"=>$Periferico,
-																		"nomenclatura"=>'',
-																		"num_serie"=>$inv_it[4],
-																		"asset"=>$inv_it[0],
-																		"id_telefonia" =>1,
-																		"id_plan_tel" =>1,
-																		"num_tel" =>'',
-																		"cuenta" =>'',
-																		"direcc_mac_tel" =>'',
-																		"imei_tel" =>'',
-																		"num_ip" =>$inv_it[9],
-																		"edo_tel" =>'NO Aplica',
-																		"id_empleado" =>1,
-																		"id_almacen" =>1,
-																		"id_edo_epo" =>1,
-																		"stock" =>1,
-																		"precio_compra" =>$Precio,
-																		"precio_venta" =>$Precio,
-																		"comentarios" =>rtrim($inv_it[14]),
-																		"loftware" =>$inv_it[1],
-																		"id_ubicacion" =>$Ubicacion,
-																		"id_linea" =>$Linea,
-																		"estacion" =>$inv_it[8],
-																		"npa" =>$inv_it[7],
-																		"idf" =>$inv_it[10],
-																		"patch_panel" =>$inv_it[11],
-																		"puerto" =>$inv_it[12],
-																		"funcion" =>$inv_it[13],
-																		"jls" =>'',
-																		"qdc" =>'',
-																		"cuantas_veces" =>1,
-																		"imagen"=>$ruta
-																	);
-					
-																								
-							print_r('Asset = '.$inv_it[0].' ; ');							
-							print_r('Periferico  Kind = Impresora Termica ');						
-							print_r('Brand  Marca = Zebra ');
-							print_r('Modelo = '.$datos_grabar["id_modelo"].' ; ');					
-							print_r('Linea  = '.$datos_grabar["id_linea"].' ; ');
-							print_r('Area  = '.$datos_grabar["id_ubicacion"].' ; ');
-							print_r('Serial = '.$inv_it[4].' ; ');						
-							print "<br>";
-														
-							$num_reg_no_existen++;
-												// Grabar el registro en la tabla.
-							$respuesta = "error";
-							$tabla = "t_Productos";
-							// Descomentarla para que grabe en la tabla
-							$respuesta = ModeloProductos::mdlIngresarProducto($tabla,$datos_grabar);
-							
-							if ($respuesta != "ok")
-							{
-								print_r ("error al grabar el registros : ".$datos_grabar["num_serie"]);
-								print ("<br>");
-							}
-						}
-						else
-						{
-							$num_reg_existen++;
-						}
-
-					} // if (!empty($inv_it[8]))			
-*/
-
+					} // if (!empty($inv_it[3]))
 
 				} //while(($inv_it = fgetcsv($csv_file_inv)) !== FALSE)
 

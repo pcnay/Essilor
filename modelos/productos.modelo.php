@@ -138,7 +138,7 @@ static public function mdlMostrarProdDanado($tabla,$item,$valor,$orden)
 		{
 			// $stmt = Conexion::conectar()->prepare("SELECT tp.id_periferico,perif.nombre AS Nombre_perif,tp.id_marca,tmarca.descripcion AS Marca,tp.id_modelo,tmod.descripcion AS Modelo,tp.id_empleado,emp.nombre AS Nom_emp, emp.apellidos AS Apellidos_emp,tp.num_tel,tp.num_serie,tp.imei_tel,tp.precio_venta FROM t_Productos tp INNER JOIN t_Periferico perif ON tp.id_periferico = perif.id_periferico INNER JOIN t_Marca tmarca ON tp.id_marca = tmarca.id_marca INNER JOIN t_Modelo tmod ON tp.id_modelo = tmod.id_modelo INNER JOIN t_Empleados emp ON tp.id_empleado = emp.id_empleado WHERE tp.num_tel != null OR tp.num_tel != 0 OR tp.num_serie != null OR tp.imei_tel != null");
 
-			$stmt = Conexion::conectar()->prepare("SELECT tp.id_periferico,perif.nombre AS Nombre_perif,tp.id_marca,tmarca.descripcion AS Marca,tp.id_modelo,tmod.descripcion AS Modelo,tp.id_empleado,emp.nombre AS Nom_emp, emp.apellidos AS Apellidos_emp,tp.num_tel,tp.num_serie,tp.imei_tel,tp.precio_venta FROM t_Productos tp INNER JOIN t_Periferico perif ON tp.id_periferico = perif.id_periferico INNER JOIN t_Marca tmarca ON tp.id_marca = tmarca.id_marca INNER JOIN t_Modelo tmod ON tp.id_modelo = tmod.id_modelo INNER JOIN t_Empleados emp ON tp.id_empleado = emp.id_empleado WHERE tp.id_periferico=11");
+			$stmt = Conexion::conectar()->prepare("SELECT tp.id_periferico,perif.nombre AS Nombre_perif,tp.id_marca,tmarca.descripcion AS Marca,tp.id_modelo,tmod.descripcion AS Modelo,tp.id_empleado,emp.nombre AS Nom_emp, emp.apellidos AS Apellidos_emp,tp.num_tel,tp.num_serie,tp.imei_tel,tp.precio_venta FROM t_Productos tp INNER JOIN t_Periferico perif ON tp.id_periferico = perif.id_periferico INNER JOIN t_Marca tmarca ON tp.id_marca = tmarca.id_marca INNER JOIN t_Modelo tmod ON tp.id_modelo = tmod.id_modelo INNER JOIN t_Empleados emp ON tp.id_empleado = emp.id_empleado WHERE tp.id_periferico=8");
 
 			$stmt->execute();
 			$registros = $stmt->fetchAll();			
@@ -167,7 +167,7 @@ static public function mdlMostrarProdDanado($tabla,$item,$valor,$orden)
 			
 			if ($valor != null)
 			{
-				$stmt = Conexion::conectar()->prepare("SELECT tp.id_linea,tm.descripcion AS Marca, tmod.descripcion AS Modelo,tp.num_serie,tu.descripcion AS Ubicacion, tp.asset,tp.npa,tp.loftware,tp.estacion,tp.num_ip,tl.descripcion AS Linea, tp.nomenclatura FROM t_Productos tp INNER JOIN t_Marca tm ON tp.id_marca = tm.id_marca INNER JOIN t_Modelo tmod ON tp.id_modelo = tmod.id_modelo INNER JOIN t_Ubicacion tu ON tp.id_ubicacion = tu.id_ubicacion INNER JOIN t_Linea tl ON tp.id_linea = tl.id_linea WHERE tp.id_linea = :item");
+				$stmt = Conexion::conectar()->prepare("SELECT tp.id_linea,tm.descripcion AS Marca, tmod.descripcion AS Modelo,tp.num_serie,tu.descripcion AS Ubicacion, tp.asset,tp.npa,tp.loftware,tp.estacion,tp.num_ip,tl.descripcion AS Linea, tp.nomenclatura AS Nomenclatura, tperif.nombre AS Periferico FROM t_Productos tp INNER JOIN t_Marca tm ON tp.id_marca = tm.id_marca INNER JOIN t_Modelo tmod ON tp.id_modelo = tmod.id_modelo INNER JOIN t_Ubicacion tu ON tp.id_ubicacion = tu.id_ubicacion INNER JOIN t_Linea tl ON tp.id_linea = tl.id_linea INNER JOIN t_Periferico tperif ON tp.id_periferico = tperif.id_periferico WHERE tp.id_linea = :item");
 
 				$stmt->bindParam(":item", $valor,PDO::PARAM_INT);	
 				$stmt->execute();

@@ -103,7 +103,7 @@ Cuando el usuario oprima el boton de "Agregar Categoria" se activa esta ventana.
             <div class="form-group">
               <div class = "input-group">
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                <input type="text" class="form-control input-lg" name="nuevoPeriferico" placeholder = "Ingresar Periferico" id="nuevoPeriferico" required>
+                <input type="text" class="form-control input-lg" maxlength="20"name="nuevoPeriferico" placeholder = "Ingresar Periferico" id="nuevoPeriferico" required>
               </div> <!-- <div class = "input-group"> -->           
 
             </div> <!-- <div class="form-group"> -->

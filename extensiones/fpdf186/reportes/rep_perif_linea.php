@@ -28,9 +28,7 @@
   while (ob_get_level())
   ob_end_clean();
 	
-	header("Content-Encoding: None", true);
-	
-	
+	header("Content-Encoding: None", true);	
 		
 	// Imprimir los datos.
 	$item = "id_linea"; 
@@ -61,24 +59,34 @@
     function Header()
     {
       //Cell(Ancho,Alto,Texto,Border=1,SigLinea=1 0=SinSaltoLinea,'Centrado,Left,Right',Relleno 0=Sin 1=Con)
-  
-      $this->SetFont('Arial','B',12);
+			$this->Image('../../../vistas/img/Logos/Essilor_Logo2.png',5,5,20);
+			//$this->Image('Essilor_Logo2.png',5,5,20);
+			$this->SetFont('Arial','B',8);			
+			$this->Ln(-8);
+			$this->Cell(35,10,'Blvd. 2000',0,0,'R');
+			$this->Ln(3);
+			$this->Cell(65,10,'Parque Industrial Nogales No. 23456',0,0,'R');			
+			$this->Ln(3);
+			
+      $this->SetFont('Arial','B',10);
 			$this->Cell(60);
 			
       // Este valor "135" es para centrar, independiente del texto escrito
       $this->Cell(135,10,'REPORTE PERIFERICOS EN LINEA DE PRODUCCION',0,0,'C');
-			$this->Ln(5);
-			
-			$this->Cell(135,5,$fecha_actual,0,1,'C',0);
-      //$this->Cell(10,5,'ID',1,0,'C',0);
+			$this->Ln(4);
+			$this->Cell(0,5,date('F j, Y, g:i a'),0,1,'R',0);
+			$this->Ln(6);
+
+			//$this->Cell(10,5,'ID',1,0,'C',0);
 			//$this->Cell(22,5,'MARCA',1,0,'C',0);
-      $this->Cell(33,5,'MODELO',1,0,'C',0);
-			$this->Cell(37,5,'SERIAL',1,0,'C',0);      
-			$this->Cell(30,5,'LINEA',1,0,'C',0);  
+			$this->SetX(2); // Margen Izquierdo al top
+			$this->Cell(40,5,'PERIFERICO',1,0,'C',0);
+			$this->Cell(23,5,'MARCA',1,0,'C',0);
+      $this->Cell(43,5,'MODELO',1,0,'C',0);
+			$this->Cell(42,5,'SERIAL',1,0,'C',0);      
+			$this->Cell(33,5,'LINEA',1,0,'C',0);  
 			$this->Cell(40,5,'NOMENCLATURA',1,0,'C',0);  
-			$this->Cell(33,5,'ASSET',1,0,'C',0);
-			$this->Cell(25,5,'NPA',1,0,'C',0); 
-			$this->Cell(22,5,'LOFT',1,0,'C',0); 
+			
 			//$this->Cell(58,5,'ESTACION',1,0,'C',0); 
 			$this->Cell(29,5,'IP',1,1,'C',0); // 1,1 = Salto de Linea
     }
@@ -99,20 +107,20 @@
 	$pdf->SetFont('Arial','',12);
 	
 	//Cell(Ancho,Alto,Texto,Border=1,SigLinea=1 0=SinSaltoLinea,'Centrado,Left,Right',Relleno 0=Sin 1=Con)
-	$pdf->SetFont('Arial','B',14);
+	//$pdf->SetFont('Arial','B',14);
 	//$pdf->Cell(30,5,$Por_almacen[0]['Almacen'],0,1,'L',0);
 	$pdf->Ln(5);
-	$pdf->SetFont('Arial','',11);
+	$pdf->SetFont('Arial','',10);
   for ($n=0;$n<count($Perif_Linea);$n++)
   {
     //$pdf->Cell(10,5,$datos2[$n]['id_refaccion'],0,0,'L',0);
-		$pdf->Cell(33,5,$Perif_Linea[$n]['Modelo'],0,0,'L',0);		
-		$pdf->Cell(37,5,$Perif_Linea[$n]['num_serie'],0,0,'L',0);
-		$pdf->Cell(30,5,$Perif_Linea[$n]['Linea'],0,0,'L',0);
-		$pdf->Cell(40,5,$Perif_Linea[$n]['nomenclatura'],0,0,'L',0);
-		$pdf->Cell(33,5,$Perif_Linea[$n]['asset'],0,0,'L',0);
-		$pdf->Cell(25,5,$Perif_Linea[$n]['npa'],0,0,'L',0);
-		$pdf->Cell(22,5,$Perif_Linea[$n]['loftware'],0,0,'L',0);
+		$pdf->SetX(2); // Margen Izquierdo al top
+		$pdf->Cell(40,5,$Perif_Linea[$n]['Periferico'],0,0,'L',0);		
+		$pdf->Cell(23,5,$Perif_Linea[$n]['Marca'],0,0,'L',0);		
+		$pdf->Cell(43,5,$Perif_Linea[$n]['Modelo'],0,0,'L',0);		
+		$pdf->Cell(42,5,$Perif_Linea[$n]['num_serie'],0,0,'L',0);
+		$pdf->Cell(33,5,$Perif_Linea[$n]['Linea'],0,0,'L',0);
+		$pdf->Cell(40,5,$Perif_Linea[$n]['Nomenclatura'],0,0,'L',0);
 		$pdf->Cell(29,5,$Perif_Linea[$n]['num_ip'],0,1,'L',0);
 		
     // MultiCell(Ancho,AltoFuente(puntos),'Texto Largo',1=Border 0=SinBorder,'Alineacion',Fondo(0=SinFondo))

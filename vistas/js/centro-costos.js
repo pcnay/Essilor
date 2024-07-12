@@ -39,7 +39,7 @@ $(".tablas tbody").on("click","button.btnEditarCentro_Costos",function(){
 
 // Validar la entrada.
 $("#nuevoCentro_Costos").bind('keypress', function(event) {
-  var regex = new RegExp("^[0-9]+$");
+  var regex = new RegExp("^[0-9A-Za-z- ]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -49,7 +49,7 @@ $("#nuevoCentro_Costos").bind('keypress', function(event) {
 
 
 $("#nuevaDesc_cc").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Za-z0-9+/# ]+$");
+  var regex = new RegExp("^[A-Za-z0-9+/#- ]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -58,7 +58,7 @@ $("#nuevaDesc_cc").bind('keypress', function(event) {
 });
 
 $("#editarDesc_cc").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Za-z0-9+/# ]+$");
+  var regex = new RegExp("^[A-Za-z0-9+/#- ]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -67,7 +67,7 @@ $("#editarDesc_cc").bind('keypress', function(event) {
 });
 
 $("#editarCentro_Costos").bind('keypress', function(event) {
-  var regex = new RegExp("^[0-9]+$");
+  var regex = new RegExp("^[A-Za-z0-9- ]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();

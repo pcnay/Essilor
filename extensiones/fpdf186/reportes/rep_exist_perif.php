@@ -42,9 +42,18 @@
     // Definiendo la cabecera
     function Header()
     {
-      //Cell(Ancho,Alto,Texto,Border=1,SigLinea=1 0=SinSaltoLinea,'Centrado,Left,Right',Relleno 0=Sin 1=Con)
-  
-      $this->SetFont('Arial','B',12);
+			//Cell(Ancho,Alto,Texto,Border=1,SigLinea=1 0=SinSaltoLinea,'Centrado,Left,Right',Relleno 0=Sin 1=Con)
+				
+			$this->Image('../../../vistas/img/Logos/Essilor_Logo2.png',5,5,20);
+			//$this->Image('Essilor_Logo2.png',5,5,20);
+			$this->SetFont('Arial','B',8);			
+			$this->Ln(-8);
+			$this->Cell(35,10,'Blvd. 2000',0,0,'R');
+			$this->Ln(3);
+			$this->Cell(65,10,'Parque Industrial Nogales No. 23456',0,0,'R');			
+			$this->Ln(8);
+
+			$this->SetFont('Arial','B',12);
 			$this->Cell(60);
 			
       // Este valor "75" es para centrar, independiente del texto escrito
@@ -55,8 +64,8 @@
       //$this->Cell(10,5,'ID',1,0,'C',0);
 			$this->Ln(8);
 
-			$this->Cell(35,5,'PERIFERICO',1,0,'C',0);
-			$this->Cell(40,5,'EXISTENCIA',1,1,'C',0);  // 1,1 = Salto de Linea
+			$this->Cell(65,5,'PERIFERICO',1,0,'C',0);
+			$this->Cell(70,5,'EXISTENCIA',1,1,'C',0);  // 1,1 = Salto de Linea
 			
     }
     function Footer()
@@ -82,8 +91,8 @@
   for ($n=0;$n<count($exist_perif);$n++)
   {
 		//$pdf->Cell(10,5,$datos2[$n]['id_refaccion'],0,0,'L',0);
-		$pdf->Cell(35,5,$exist_perif[$n]['Nom_perif'],0,0,'C',0);
-		$pdf->Cell(40,5,$exist_perif[$n]['Existencia'],0,1,'C',0);
+		$pdf->Cell(65,5,$exist_perif[$n]['Nom_perif'],0,0,'C',0);
+		$pdf->Cell(70,5,$exist_perif[$n]['Existencia'],0,1,'C',0);
 		
 		/*
     // MultiCell(Ancho,AltoFuente(puntos),'Texto Largo',1=Border 0=SinBorder,'Alineacion',Fondo(0=SinFondo))

@@ -52,6 +52,15 @@
     {
       //Cell(Ancho,Alto,Texto,Border=1,SigLinea=1 0=SinSaltoLinea,'Centrado,Left,Right',Relleno 0=Sin 1=Con)
   
+			$this->Image('../../../vistas/img/Logos/Essilor_Logo2.png',5,5,20);
+			//$this->Image('Essilor_Logo2.png',5,5,20);
+			$this->SetFont('Arial','B',8);			
+			$this->Ln(-8);
+			$this->Cell(35,10,'Blvd. 2000',0,0,'R');
+			$this->Ln(3);
+			$this->Cell(65,10,'Parque Industrial Nogales No. 23456',0,0,'R');			
+			$this->Ln(3);
+			
       $this->SetFont('Arial','B',12);
 			$this->Cell(60);
 			
@@ -59,7 +68,9 @@
       $this->Cell(135,10,'REPORTE TELEFONOS ASIGNADOS',0,0,'C');
 			$this->Ln(5);
 			
-			$this->Cell(135,5,date(),0,1,'C',0);
+			$this->Cell(0,5,date('F j, Y, g:i a'),0,1,'R',0);
+			$this->Ln(4);
+			
       //$this->Cell(10,5,'ID',1,0,'C',0);
 			$this->Cell(25,5,'MARCA',1,0,'C',0);
 			$this->Cell(40,5,'MODELO',1,0,'C',0);

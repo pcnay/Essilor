@@ -7,9 +7,9 @@
 	//
 	echo "Iniciando el respaldo ... ";
   $db_host = 'localhost';
-  $db_name = 'bd_responsivas';
-  $db_user = 'usuario_responsiva';
-  $db_pass = 'responsivas-2020';
+  $db_name = 'bd_essilor';
+  $db_user = 'usuario_essilor';
+  $db_pass = 'essilor-Mar-04-2020';
 
 	// Importante, se tiene que proporcionar el permiso de escritura para todos:, chmod -R 757 carpeta/
 	date_default_timezone_set('America/Tijuana');	
