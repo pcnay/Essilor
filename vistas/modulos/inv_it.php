@@ -44,6 +44,7 @@
 	exit;
 	return;
 	*/
+	
 
 	$tabla = "t_Marca";
 	$item = null;
@@ -217,7 +218,7 @@
 		$separar_cadena = explode(" ",$reg_csv_marca);
 		//print ("Tamaño -separar_cadena- : ".count($separar_cadena));
 
-		$Marcas = 'Sin Marcasssss';
+		$Marcas = 'Sin Marcas';
 		// $reg_csv_marca = Es la descripcion de Marca se captura en el archivo de Excel.
 
 		// $Arreglo_marca = Arreglo bidimensional.
@@ -225,10 +226,10 @@
 		{
 			for ($n=0;$n<2;$n++)
 			{
-				$cadena = $Arreglo_marca[$l][$n];
+				$cadena = trim($Arreglo_marca[$l][$n]);
 
 				// if ( $cadena == $reg_csv_marca) // 'dell' ) // )
-				if ( strcmp($cadena,$reg_csv_marca) == 0)
+				if ( strcmp($cadena,trim($reg_csv_marca)) == 0)
 				{
 					//print_r('CUMPLE CONDICION');
 					$Marcas = $Arreglo_marca[$l][0];
@@ -285,41 +286,30 @@
 	} // function Obtener_IdMarca() 
 
 	// Obtener el Modelo	
-	function Obtener_IdModelo($Arreglo_modelos,$reg_csv)
+	function Obtener_IdModelo($Arreglo_modelos,$reg_csv_modelo)
 	{
 		$columna_1 = 0;					
 
-		$separar_cadena = explode(" ",$reg_csv);
+		$separar_cadena = explode(" ",$reg_csv_modelo);
 
 		$Modelos = "Sin Modelos";
 		for ($l=0;$l<count($Arreglo_modelos);$l++)
 		{
 			for ($n=0;$n<2;$n++)
 			{
-				$contador_pal = 0;
-				for ($k=0;$k<count($separar_cadena);$k++)
-				{
+				$cadena = trim($Arreglo_modelos[$l][$n]);
 
-					$encontro = strpos($Arreglo_modelos[$l][$n],$separar_cadena[$k]);
-					if ($encontro === false)
-					{
-						//print_r("Valor NO encontrado ");
-					}
-					else
-					{
-						$contador_pal++;
-						//print_r("Valor encontrado ".$separar_cadena[$k].' '.$encontro);
-						//print("<br>");
-					}
-				} // for ($k=0;$k<2;$k++)
-
-				if ($contador_pal == count($separar_cadena))
+				// if ( $cadena == $reg_csv_marca) // 'dell' ) // )
+				if ( strcmp($cadena,trim($reg_csv_modelo)) == 0)
 				{
-//					print("<br>");
-//					print_r ("Valor del indice modelo = ".$Arreglo_modelos[$l][$n-1]);
-						$Modelos = $Arreglo_modelos[$l][$n-1];
-					return $Modelos;
+					//print_r('CUMPLE CONDICION');
+					$Modelos = $Arreglo_modelos[$l][0];
 				}
+				else
+				{
+					//print_r('NO Cumple Condicion');
+				}
+
 
 			} // for ($n=0;$n<2;$n++)
 
@@ -341,33 +331,24 @@
 			for ($n=0;$n<2;$n++)
 			{
 				$contador_pal = 0;
-				for ($k=0;$k<count($separar_cadena);$k++)
-				{				
-					$encontro = strpos($Arreglo_perifericos[$l][$n],$separar_cadena[$k]);
-					
-					if ($encontro === false)
-					{
-						//print_r("Valor NO encontrado ");
-					}
-					else
-					{
-						$contador_pal++;
-					}
+	
+				$cadena = trim($Arreglo_perifericos[$l][$n]);
 
-				} // for ($k=0;$k<2;$k++)
-
-					if ($contador_pal == count($separar_cadena))
-					{
-						//print_r("Valor NO encontrado ");
-//						print("<br>");
-//						print_r ("Valor del indice periferico = ".$Arreglo_perifericos[$l][$n-1]);
-							$Perifericos = $Arreglo_perifericos[$l][$n-1];
-						return $Perifericos;					
-					}				
+				// if ( $cadena == $reg_csv_marca) // 'dell' ) // )
+				if ( strcmp($cadena,trim($reg_csv_perif)) == 0)
+				{					
+					$Perifericos = $Arreglo_perifericos[$l][0];
+					print_r('Periferico',$Perifericos);
+				}
+				else
+				{
+					//print_r('NO Cumple Condicion');
+				}
 
 			} // for ($n=0;$n<2;$n++)			
 
 		} // for ($l=0;$l<count($Arreglo_periferico);$l++)
+
 		return $Perifericos;
 
 	} // function Obtener_IdPerifericos() 
@@ -402,8 +383,6 @@ function Obtener_IdUbicacion($Arreglo_ubicaciones,$reg_csv_ubic)
 				if ($contador_pal == count($separar_cadena))
 				{
 					//print_r("Valor NO encontrado ");
-//						print("<br>");
-//						print_r ("Valor del indice periferico = ".$Arreglo_ubicaciones[$l][$n-1]);
 						$Ubicacion = $Arreglo_ubicaciones[$l][$n-1];
 					return $Ubicacion;					
 				}				
@@ -443,9 +422,6 @@ function Obtener_IdLinea($Arreglo_linea,$reg_csv_linea)
 
 				if ($contador_pal == count($separar_cadena))
 				{
-					//print_r("Valor NO encontrado ");
-//						print("<br>");
-//						print_r ("Valor del indice periferico = ".$Arreglo_ubicaciones[$l][$n-1]);
 						$Linea = $Arreglo_linea[$l][$n-1];
 					return $Linea;					
 				}				
@@ -569,15 +545,7 @@ function Eliminar_Espacios($cadena)
 	
 						$periferico_sinEspacios = Eliminar_Espacios($inv_it[2]);
 
-						/*
-						print ('<br>');
-						print_r($marca_sinEspacios);
-						print('<br>');
-						exit;
-						return;
-						*/
-
-
+				
 						if ($eXiste_prod=="S")
 						{
 							//echo "existe producto \r"; Eliminar_Espacios
@@ -587,7 +555,8 @@ function Eliminar_Espacios($cadena)
 							$Marca = Obtener_IdMarca($Marcas_Obtenidas,strtolower($marca_sinEspacios));
 
 							$Periferico = Obtener_IdPeriferico($Perifericos_Obtenidos,strtolower($periferico_sinEspacios));
-						
+
+							$Seriales = trim($inv_it[3]);
 
 							$tabla = "t_Empleados";
 							$item = "ntid";
@@ -629,7 +598,7 @@ function Eliminar_Espacios($cadena)
 																		"id_marca"=>$Marca,
 																		"id_periferico"=>$Periferico,
 																		"nomenclatura"=>'',
-																		"num_serie"=>$inv_it[3],
+																		"num_serie"=>$Seriales,
 																		"asset"=>'',
 																		"id_telefonia" =>1,
 																		"id_plan_tel" =>1,
@@ -826,9 +795,9 @@ function Eliminar_Espacios($cadena)
 				} //while(($inv_it = fgetcsv($csv_file_inv)) !== FALSE)
 
 				print_r('<br>');
-				print_r("Seriales NO Grabados =  ".$num_reg_no_existen);
+				print_r("Seriales Grabados =  ".$num_reg_no_existen);
 				print_r('<br>');
-				print_r("Seriales Grabados = ".$num_reg_existen);
+				print_r("Seriales Existentes = ".$num_reg_existen);
 
 				fclose($csv_file_it);
 

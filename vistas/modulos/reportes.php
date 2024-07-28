@@ -219,8 +219,8 @@
 					</div>					
 						<button class="btn btn-success btnSubirCinta" id="subir_cinta" disabled >Subir Cintas</button>	
 						<button class="btn btn-success btnSubirInvIT" id="inv_it">Inv I.T. Excel</button>
-						<button class="btn btn-success btnSubirInvIT_Jabil" id="inv_it_jabil" >Inv I.T. Jabil</button>
-						<button class="btn btn-success btnSubirEmpJabil" id="emp_jabil" >Empleados Jabil</button>						
+						<button class="btn btn-success btnAct_Productos" id="act_producto" >Actualizar Productos</button>
+						<button class="btn btn-success btnSubirEmpJabil" id="emp_jabil" disabled >Empleados Jabil</button>						
 						<br>
 
 				</div>

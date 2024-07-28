@@ -230,9 +230,9 @@ $(".btnSubirInvIT").click(function(){
 })
 
 // Subir el Inventario de I.T. Jabikl (Archivo CSV) 
-$(".btnSubirInvIT_Jabil").click(function(){
+$(".btnAct_Productos").click(function(){
 	//console.log("Se oprimio el boton de Inv I.T. Jabil")
-	window.open("index.php?ruta=inv_it_jabil","_blank");
+	window.open("index.php?ruta=act_producto","_blank");
 })
 
 // Subir los empleados de Jabil desde un archivo "CSV" 
