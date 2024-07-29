@@ -144,7 +144,7 @@
 	}
 	
 // Obtener la Marca.
-function Obtener_IdMarca($Arreglo_marca,$reg_csv_marca)
+function Obtener_IdMarca($Arreglo_marcas,$reg_csv_marca)
 {
 	$columna_1 = 0;					
 	
@@ -157,17 +157,17 @@ function Obtener_IdMarca($Arreglo_marca,$reg_csv_marca)
 	// $reg_csv_marca = Es la descripcion de Marca se captura en el archivo de Excel.
 
 	// $Arreglo_marca = Arreglo bidimensional.
-	for ($l=0;$l<count($Arreglo_marca);$l++)
+	for ($l=0;$l<count($Arreglo_marcas);$l++)
 	{
 		for ($n=0;$n<2;$n++)
 		{
-			$cadena = trim($Arreglo_marca[$l][$n]);
+			$cadena = trim($Arreglo_marcas[$l][$n]);
 
 			// if ( $cadena == $reg_csv_marca) // 'dell' ) // )
 			if ( strcmp($cadena,trim($reg_csv_marca)) == 0)
 			{
 				//print_r('CUMPLE CONDICION');
-				$Marcas = $Arreglo_marca[$l][0];
+				$Marcas = $Arreglo_marcas[$l][0];
 			}
 			else
 			{
@@ -357,7 +357,7 @@ function Obtener_IdLinea($Arreglo_linea,$reg_csv_linea)
 						if ($existe_prod)
 						{						
 							print_r('<br>');
-							print_r('Existe Producto ');
+							print_r('Encontro el Producto ');
 							print_r('<br/>');
 							
 
@@ -372,33 +372,62 @@ function Obtener_IdLinea($Arreglo_linea,$reg_csv_linea)
 							$tabla = "t_Productos";
 							$id_producto = $existe_prod['id_producto'];
 
-							// Obteniendo el campo que se desea actualizar,
+							// Obteniendo el campo que se desea actualizar,				
 
 							if (!empty($inv_it[1])) // Periferico
 							{
-								print ('<br');
-								print_r("Periferico NO esta Vacioa");
-								print("<br/>");
-								exit;
-								return;
-
-								$campo_tabla = 'periferico';
+								$campo_tabla = 'id_periferico';
 								$periferico_sinEspacios = Eliminar_Espacios($inv_it[1]);							
 								$Periferico = Obtener_IdPeriferico($Perifericos_Obtenidos,strtolower($periferico_sinEspacios));			
+								$valor_campo_tabla = $Periferico;
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
 
-								$valor_campo_tabla = $Periferico;								
-								print ('<br');
-								print_r("Valor Campo Tabla ".$valor_campo_tabla);
-								print("<br/>");
-
+								//print_r ('<br>');
+								//print_r("Valor Campo Tabla ".$valor_campo_tabla);
+								//print_r("<br/>");
+								//exit;
+								//return;
 							}
-							else
+							if (!empty($inv_it[2])) // Marca
 							{
-								$campo_tabla = 'periferico';
-								$valor_campo_tabla = 1;
+								$campo_tabla = 'id_marca';
+								$marca_sinEspacios = Eliminar_Espacios($inv_it[2]);							
+								$Marca = Obtener_IdMarca($Marcas_Obtenidas,strtolower($marca_sinEspacios));			
+								$valor_campo_tabla = $Marca;
+
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+								//print_r ('<br>');
+								//print_r("Valor Campo Tabla ".$valor_campo_tabla);
+								//print_r("<br/>");
+								//exit;
+								//return;
 							}
 
+							if (!empty($inv_it[3])) // Modelos
+							{
+								$campo_tabla = 'id_modelo';
+								$marca_sinEspacios = Eliminar_Espacios($inv_it[3]);							
+								$Modelo = Obtener_IdModelo($Modelos_Obtenidos,strtolower($marca_sinEspacios));			
+								$valor_campo_tabla = $Modelo;
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+								//print_r ('<br>');
+								//print_r("Valor Campo Tabla ".$valor_campo_tabla);
+								//print_r("<br/>");
+								//exit;
+								//return;
+							}
 							
+							if (!empty($inv_it[4])) // Nomenclatura
+							{
+								$campo_tabla = 'nomenclatura';
+								$valor_campo_tabla = $inv_it[4];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
+
 							if (!empty($inv_it[22])) // Estacion
 							{
 								$campo_tabla = 'estacion';
@@ -410,12 +439,12 @@ function Obtener_IdLinea($Arreglo_linea,$reg_csv_linea)
 								$valor_campo_tabla = Null;
 							}
 
-							$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+
+		
 							
 							// id_producto = 115
 							// Campo Modificar = Estacion (10)
 
-							$num_reg_act++;	
 							
 						} // if ($existe_prod)
 						else
