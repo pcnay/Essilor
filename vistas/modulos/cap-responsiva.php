@@ -111,7 +111,7 @@
 											<div class="col-lg-8"> <!-- Se reduce de tamano de 6 a 4, utilizando  --> 
 												<div class="input-group">												
 													<select class="form-control input" id= "nuevaPlanta" name="nuevaPlanta" required>
-														<option value="">Planta</option>
+														<option value="">Ubicacion</option>
 														<?php
 													
 															// Se obtendrán el Almacen.

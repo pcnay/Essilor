@@ -12,7 +12,7 @@
 	}
 	*/
 	
-require_once ('tcpdf_include.php');
+require_once ('../examples/tcpdf_include.php');
 require_once "../../../controladores/responsivas.controlador.php";
 require_once "../../../modelos/responsivas.modelo.php"; 	
 require_once "../../../controladores/usuarios.controlador.php";
@@ -91,20 +91,19 @@ $pdf->AddPage();
 // Crear un primer bloque de maquetacion.
 // En esta parte se puede utiizar las tabulaciones.
 // Los estilos se colocan en linea, es decir en esta parte.
+// images/logo_jabil1.png
 
 $bloque1 = <<<EOF
 	<table>
 		<tr>
-			<td style="width:160px;"><img src="images/logo_jabil1.png"></td>
+			<td style="width:90px;"><img src="../../../vistas/img/Logos/Essilor_Logo2.png"></td>
 			<td style="background-color:white; width:255px">
-				<div style="font-size:9.0px; text-align:left; line-height:15px;">	
-					       No. Maquila : 411 Baja	
+				<div style="font-size:9.0px; text-align:left; line-height:15px;">						       
 					<br>
-								    Blvd. Terarn Teran No. 20662 L-388 Fracc. 
-								 Murua Oriente,      Tel.: 999-999-99-99, email:info@jabil.com
+								    Blvd. 2000, Parque Nogales, 22245 Tijuana, B.C.
+								    Tel.: 663-106-10-84, email:essilorluxotticatj@gmail.com
 					<br>
 								 Tijuana, B.C. Mexico
-						     
 				</div>
 			</td>
 			<td style="background-color:white; width:120px; text-align:right; color:red">				
@@ -122,7 +121,7 @@ $bloque1 = <<<EOF
 		<tr>
 			<td style="background-color:white; width:540px">
 				<div style="font-size:13.5px; color:blue; text-align:center; line-height:15px;">
-					Recibo De Propiedad De La Compañia NPA De Mexico, S. de R.L. De C.V.
+					Recibo De Propiedad De Essilor Luxottica
 				</div>
 			</td>
 		</tr>

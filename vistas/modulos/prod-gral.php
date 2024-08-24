@@ -66,12 +66,12 @@
                 <th>Descripcion</th>
 								<th>Modelo</th>
                 <th>Serial</th>
-								<th>Hostname</th>
-								<th>Asset</th>                
+								<th>Linea</th>
+								<th>Estacion</th>                
 								<th>Tel</th>
 								<th>IMEI</th>
                 <th>Stock</th>								
-								<th>NTID</th>
+								<th>IP</th>
                 <th>Empleado</th>
                 <th>Acciones </th>
               </tr>

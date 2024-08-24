@@ -356,9 +356,9 @@ function Obtener_IdLinea($Arreglo_linea,$reg_csv_linea)
 						$existe_prod = ModeloProductos::mdlMostrarProductos($tabla,$item,$valor,$orden);
 						if ($existe_prod)
 						{						
-							print_r('<br>');
-							print_r('Encontro el Producto ');
-							print_r('<br/>');
+							//print_r('<br>');
+							//print_r('Encontro el Producto ');
+							//print_r('<br/>');
 							
 
 							//MdeloProductos::mdlActualizarProducto($tabla,$item1,$valor1,$valor2);
@@ -428,23 +428,94 @@ function Obtener_IdLinea($Arreglo_linea,$reg_csv_linea)
 								$num_reg_act++;	
 							}
 
+							if (!empty($inv_it[9])) // Direccion MAC Red
+							{
+								$campo_tabla = 'direcc_mac_tel';
+								$valor_campo_tabla = $inv_it[9];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
+
+							if (!empty($inv_it[11])) // Direccion IP
+							{
+								$campo_tabla = 'num_ip';
+								$valor_campo_tabla = $inv_it[11];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
+
+							if (!empty($inv_it[14])) // Estacion
+							{
+								$campo_tabla = 'id_almacen';
+								$valor_campo_tabla = intval($inv_it[14]);
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
+
+							if (!empty($inv_it[17])) // Precio Compra
+							{
+								$campo_tabla = 'precio_compra';
+								$valor_campo_tabla = $inv_it[17];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+
+								$campo_tabla = 'precio_venta';
+								$valor_campo_tabla = $inv_it[17];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
+
+							if (!empty($inv_it[20])) // Ubicacion
+							{
+								$campo_tabla = 'id_ubicacion';
+								$ubicacion_sinEspacios = Eliminar_Espacios($inv_it[20]);							
+								$Ubicacion = Obtener_IdUbicacion($Ubicaciones_Obtenidas,strtolower($ubicacion_sinEspacios));			
+								$valor_campo_tabla = $Ubicacion;
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
+
+							if (!empty($inv_it[21])) // Linea
+							{
+								$campo_tabla = 'id_linea';
+								$linea_sinEspacios = Eliminar_Espacios($inv_it[21]);							
+								$Linea = Obtener_IdLinea($Lineas_Obtenidas,strtolower($linea_sinEspacios));			
+								$valor_campo_tabla = $Linea;
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
+
 							if (!empty($inv_it[22])) // Estacion
 							{
 								$campo_tabla = 'estacion';
 								$valor_campo_tabla = $inv_it[22];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
 							}
-							else
+
+							if (!empty($inv_it[23])) // IDF
 							{
-								$campo_tabla = 'estacion';
-								$valor_campo_tabla = Null;
+								$campo_tabla = 'idf';
+								$valor_campo_tabla = $inv_it[23];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
 							}
 
+							if (!empty($inv_it[24])) // Patch Panel
+							{
+								$campo_tabla = 'patch_panel';
+								$valor_campo_tabla = $inv_it[24];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
 
-		
-							
-							// id_producto = 115
-							// Campo Modificar = Estacion (10)
-
+							if (!empty($inv_it[25])) // Puerto, Agregar el Switch 
+							{
+								$campo_tabla = 'puerto';
+								$valor_campo_tabla = $inv_it[25];
+								$Actualizar_Epo = ModeloProductos::mdlActualizarProducto($tabla,$campo_tabla,$valor_campo_tabla,$id_producto);
+								$num_reg_act++;	
+							}
 							
 						} // if ($existe_prod)
 						else

@@ -16,7 +16,7 @@ require_once("../../../modelos/cintas.modelo.php");
 
 // Include the main TCPDF library (search for installation path).
 // Se debe respetar esta alineacion a la izquierda.
-require_once('tcpdf_include.php');
+require_once('../examples/tcpdf_include.php');
 
 // Se crea una clase Extendida del TCPDF para manejar Encabezados y Pie de Pagina Personalizados.
 class MYPDF extends TCPDF 

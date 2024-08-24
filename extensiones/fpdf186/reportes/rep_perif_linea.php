@@ -85,6 +85,7 @@
       $this->Cell(43,5,'MODELO',1,0,'C',0);
 			$this->Cell(42,5,'SERIAL',1,0,'C',0);      
 			$this->Cell(33,5,'LINEA',1,0,'C',0);  
+			$this->Cell(20,5,'ESTACION',1,0,'C',0);  
 			$this->Cell(40,5,'NOMENCLATURA',1,0,'C',0);  
 			
 			//$this->Cell(58,5,'ESTACION',1,0,'C',0); 
@@ -120,6 +121,7 @@
 		$pdf->Cell(43,5,$Perif_Linea[$n]['Modelo'],0,0,'L',0);		
 		$pdf->Cell(42,5,$Perif_Linea[$n]['num_serie'],0,0,'L',0);
 		$pdf->Cell(33,5,$Perif_Linea[$n]['Linea'],0,0,'L',0);
+		$pdf->Cell(20,5,$Perif_Linea[$n]['estacion'],0,0,'L',0);
 		$pdf->Cell(40,5,$Perif_Linea[$n]['Nomenclatura'],0,0,'L',0);
 		$pdf->Cell(29,5,$Perif_Linea[$n]['num_ip'],0,1,'L',0);
 		

@@ -91,12 +91,12 @@
 							"'.$productos[$i]["Periferico"].'",
 							"'.$productos[$i]["Modelo"].'",
 							"'.$productos[$i]["Serial"].'",							
-							"'.$productos[$i]["nomenclatura"].'",
-							"'.$productos[$i]["asset"].'",							
+							"'.$productos[$i]["Nom_linea"].'",
+							"'.$productos[$i]["estacion"].'",							
 							"'.$productos[$i]["num_tel"].'",
 							"'.$productos[$i]["imei_tel"].'", 							
 							"'.$stock.'",														
-							"'.$productos[$i]["Ntid"].'", 
+							"'.$productos[$i]["num_ip"].'", 
 							"'.$productos[$i]["Empleado"].'",
 							"'.$botones.'"
 						],';
