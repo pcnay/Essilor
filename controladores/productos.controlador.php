@@ -194,7 +194,7 @@
 													"id_plan_tel" =>1,
 													"num_tel" =>'',
 													"cuenta" =>'',
-													"direcc_mac_tel" =>'',
+													"direcc_mac_tel" =>$_POST['nuevaFuncion'],
 													"imei_tel" =>'',
 													"num_ip" =>'',
 													"edo_tel" =>'NO Aplica',
@@ -225,7 +225,7 @@
 					}
 					
 					if ($tipo_prod == 'Produccion')
-					{
+					{					
 						$datos = array("id_periferico" =>$_POST["nuevoPeriferico"],
 													"num_serie" =>$_POST["nuevoSerial"],
 													"id_telefonia" =>1,
@@ -242,7 +242,7 @@
 													"id_linea" =>$_POST["nuevaLinea"],												
 													"num_tel" =>'',
 													"cuenta" =>'',
-													"direcc_mac_tel" =>'',
+													"direcc_mac_tel" =>$_POST['nuevaFuncion'],
 													"imei_tel" =>'',
 													"nomenclatura" =>$_POST["nuevaNomenclatura"],
 													"stock" =>$_POST["nuevoStock"],												
@@ -256,7 +256,8 @@
 													"idf" =>$_POST["nuevoIdf"],
 													"patch_panel" =>$_POST["nuevoPatchPanel"],
 													"puerto" =>$_POST["nuevoPuerto"],
-													"funcion" =>$_POST["nuevaFuncion"],
+													//"funcion" =>$_POST["nuevaFuncion"],
+													"funcion" =>'',
 													"jls" =>$_POST["nuevoJls"],
 													"qdc" =>$_POST["nuevoQdc"],														
 													"imagen" =>$ruta);
@@ -336,7 +337,8 @@
 								}).then(function(result){
 									if (result.value)
 									{
-										window.location="prod-gral";
+										// window.location="prod-gral";
+										window.location="prod-prod";
 									}
 		
 									});			

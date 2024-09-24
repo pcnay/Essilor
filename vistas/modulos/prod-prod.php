@@ -414,7 +414,7 @@
 								<label for="cap_idf">IDF :</label>			
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-	                <input type="text" maxlength="5" class="form-control input-lg" id = "nuevoIdf" name="nuevoIdf" placeholder = "Capturar de IDF">
+	                <input type="text" maxlength="10" class="form-control input-lg" id = "nuevoIdf" name="nuevoIdf" placeholder = "Capturar de IDF">
 	              </div> <!-- <div class = "input-group"> -->           
 							</div> <!-- <div class="form-group"> -->
             </div>  <!-- class= "col-xs-12 col-sm-6"> -->
@@ -425,7 +425,7 @@
 								<label for="cap_patchPanel">Patch Panel :</label>			
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-	                <input type="text" maxlength="5" class="form-control input-lg" id = "nuevoPatchPanel" name="nuevoPatchPanel" placeholder = "Capturar Patch Panel">
+	                <input type="text" maxlength="15" class="form-control input-lg" id = "nuevoPatchPanel" name="nuevoPatchPanel" placeholder = "Capturar Patch Panel">
 	              </div> <!-- <div class = "input-group"> -->           
 							</div> <!-- <div class="form-group"> -->
             </div>  <!-- class= "col-xs-12 col-sm-6"> -->
@@ -436,7 +436,7 @@
 								<label for="cap_puerto">Puerto :</label>			
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-	                <input type="text" maxlength="5" class="form-control input-lg" id = "nuevoPuerto" name="nuevoPuerto" placeholder = "Capturar Puerto">
+	                <input type="text" maxlength="10" class="form-control input-lg" id = "nuevoPuerto" name="nuevoPuerto" placeholder = "Capturar Puerto">
 	              </div> <!-- <div class = "input-group"> -->           
 							</div> <!-- <div class="form-group"> -->
             </div>  <!-- class= "col-xs-12 col-sm-6"> -->
@@ -444,10 +444,10 @@
 						<!-- Capturar en que  funcion realiza en la linea -->
 						<div class= "col-xs-12 col-sm-6">
             	<div class="form-group">
-								<label for="cap_funcion">Funcion :</label>			
+								<label for="cap_funcion">MAC Address :</label>			
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-	                <input type="text" maxlength="20" class="form-control input-lg" id = "nuevaFuncion" name="nuevaFuncion" placeholder = "Capturar La Funcion">
+	                <input type="text" maxlength="20" class="form-control input-lg" id = "nuevaFuncion" name="nuevaFuncion" placeholder = "Capturar La MAC Address">
 	              </div> <!-- <div class = "input-group"> -->           
 							</div> <!-- <div class="form-group"> -->
             </div>  <!-- class= "col-xs-12 col-sm-6"> -->
@@ -740,7 +740,7 @@ Cuando el usuario oprima el boton de "Editar Producto" se activa esta ventana.
 						<!-- Editar Direccion MAC del Telefono. -->
 						<div class= "col-xs-12 col-sm-6">
             	<div class="form-group">
-								<label for="direcc_mac">Direccion MAC Celular:</label>
+								<label for="direcc_mac">Direccion MAC :</label>
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
 	                <input type="text" maxlength="20" class="form-control input-lg" id = "editarDireccMac" name="editarDireccMac">
@@ -992,7 +992,7 @@ Cuando el usuario oprima el boton de "Editar Producto" se activa esta ventana.
 								<label for="editar_idf">IDF :</label>			
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-	                <input type="text" maxlength="5" class="form-control input-lg" id = "editarIdf" name="editarIdf">
+	                <input type="text" maxlength="10" class="form-control input-lg" id = "editarIdf" name="editarIdf">
 	              </div> <!-- <div class = "input-group"> -->           
 							</div> <!-- <div class="form-group"> -->
             </div>  <!-- class= "col-xs-12 col-sm-6"> -->
@@ -1003,7 +1003,7 @@ Cuando el usuario oprima el boton de "Editar Producto" se activa esta ventana.
 								<label for="editar_patchPanel">Patch Panel :</label>			
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-	                <input type="text" maxlength="5" class="form-control input-lg" id = "editarPatchPanel" name="editarPatchPanel" placeholder = "Capturar Patch Panel">
+	                <input type="text" maxlength="15" class="form-control input-lg" id = "editarPatchPanel" name="editarPatchPanel" placeholder = "Capturar Patch Panel">
 	              </div> <!-- <div class = "input-group"> -->           
 							</div> <!-- <div class="form-group"> -->
             </div>  <!-- class= "col-xs-12 col-sm-6"> -->
@@ -1014,7 +1014,7 @@ Cuando el usuario oprima el boton de "Editar Producto" se activa esta ventana.
 								<label for="editar_puerto">Puerto :</label>			
 	              <div class = "input-group">
 	                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-	                <input type="text" maxlength="5" class="form-control input-lg" id = "editarPuerto" name="editarPuerto">
+	                <input type="text" maxlength="10" class="form-control input-lg" id = "editarPuerto" name="editarPuerto">
 	              </div> <!-- <div class = "input-group"> -->           
 							</div> <!-- <div class="form-group"> -->
             </div>  <!-- class= "col-xs-12 col-sm-6"> -->

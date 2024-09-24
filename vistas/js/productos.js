@@ -970,7 +970,7 @@ $("#editarEstacion").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#nuevoIdf").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Z0-9]+$");
+  var regex = new RegExp("^[A-Z0-9-]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -981,7 +981,7 @@ $("#nuevoIdf").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#editarIdf").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Z0-9]+$");
+  var regex = new RegExp("^[A-Z0-9-]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -992,7 +992,7 @@ $("#editarIdf").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#nuevoPatchPanel").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Z0-9]+$");
+  var regex = new RegExp("^[A-Z0-9-]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -1003,7 +1003,7 @@ $("#nuevoPatchPanel").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#editarPatchPanel").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Z0-9]+$");
+  var regex = new RegExp("^[A-Z0-9-]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -1014,7 +1014,7 @@ $("#editarPatchPanel").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#nuevoPuerto").bind('keypress', function(event) {
-  var regex = new RegExp("^[0-9]+$");
+  var regex = new RegExp("^[A-Z0-9- ]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -1025,7 +1025,7 @@ $("#nuevoPuerto").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#editarPuerto").bind('keypress', function(event) {
-  var regex = new RegExp("^[0-9]+$");
+  var regex = new RegExp("^[A-Z0-9- ]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -1036,7 +1036,7 @@ $("#editarPuerto").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#nuevaFuncion").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Za-z0-9]+$");
+  var regex = new RegExp("^[A-Za-z0-9:-]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
@@ -1047,7 +1047,7 @@ $("#nuevaFuncion").bind('keypress', function(event) {
 // Validar los caracteres permitidos 
 // Validar la entrada.
 $("#editarFuncion").bind('keypress', function(event) {
-  var regex = new RegExp("^[A-Za-z0-9]+$");
+  var regex = new RegExp("^[A-Za-z0-9:-]+$");
   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
   if (!regex.test(key)) {
     event.preventDefault();
